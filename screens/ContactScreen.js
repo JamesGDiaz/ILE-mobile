@@ -1,7 +1,6 @@
 import React from 'react';
-import { Image, Platform, ScrollView, StyleSheet, View, Text } from 'react-native';
+import { Image, Platform, ScrollView, StyleSheet, View, Text, TextInput } from 'react-native';
 import { LinearGradient } from 'expo';
-import { MonoText } from '../components/StyledText';
 import { Ionicons } from '@expo/vector-icons';
 
 export default class ContactScreen extends React.Component {
@@ -22,9 +21,16 @@ export default class ContactScreen extends React.Component {
                     </View>
                     <View style={styles.getStartedContainer}>
 
-                        <MonoText style={styles.welcomeText}>
+                        <Text style={styles.welcomeText}>
                             Cuentanos tu experiencia
-            </MonoText>
+            </Text>
+                    </View>
+                    <TextInput
+                        style={{ height: 40 }}
+                        placeholder="Escribe tu mensaje aqui."
+                    />
+                    <View style={styles.container}>
+
                     </View>
                 </ScrollView>
             </LinearGradient>
@@ -35,10 +41,6 @@ export default class ContactScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-    },
-    backgroundLinearGradientStyle: {
-        width: '100%',
-        flex: 1
     },
     contentContainer: {
         paddingTop: 30,
@@ -70,6 +72,7 @@ const styles = StyleSheet.create({
         paddingVertical: 25
     },
     welcomeText: {
+        fontFamily: 'laila-bold',
         fontSize: 40,
         color: '#fff',
         lineHeight: 50,

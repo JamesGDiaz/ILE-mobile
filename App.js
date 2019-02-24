@@ -29,6 +29,9 @@ export default class App extends React.Component {
   _loadResourcesAsync = async () => {
     return Promise.all([
       Font.loadAsync({
+        'laila-bold': require('./assets/fonts/Laila-Bold.ttf'),
+        'laila-regular': require('./assets/fonts/Laila-Regular.ttf'),
+        'laila-medium': require('./assets/fonts/Laila-Medium.ttf'),
       }),
     ]);
   };

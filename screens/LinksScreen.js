@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: '#eee',
     borderBottomWidth: 1,
-    borderBottomColor: '#ebebeb'
+    borderBottomColor: '#ebebeb',
   },
   containerRow: {
     flex: 1,
@@ -169,7 +169,9 @@ const styles = StyleSheet.create({
   },
   optionText: {
     color: '#eee',
+    fontFamily: 'laila-regular',
     fontSize: 22,
+    textAlign: 'center',
     alignItems: 'center',
     marginHorizontal: 20,
     marginBottom: 40,

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Image, Platform, ScrollView, StyleSheet, View, Text } from 'react-native';
 import { LinearGradient } from 'expo';
-import { MonoText } from '../components/StyledText';
-import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
+import GestureRecognizer from 'react-native-swipe-gestures';
 
 
 export default class HomeScreen extends React.Component {
@@ -38,12 +37,12 @@ export default class HomeScreen extends React.Component {
             </View>
             <View style={styles.getStartedContainer}>
 
-              <MonoText style={styles.welcomeText}>
+              <Text style={styles.welcomeText}>
                 Interrupción Legal del Embarazo
-            </MonoText>
+            </Text>
             </View>
 
-            <MonoText style={styles.getStartedText}>Desliza hacia arriba o a la izquierda y{"\n"} selecciona un tema.</MonoText>
+            <Text style={styles.getStartedText}>Desliza hacia arriba o a la izquierda y{"\n"} selecciona un tema.</Text>
 
           </ScrollView>
         </LinearGradient>
@@ -83,6 +82,7 @@ const styles = StyleSheet.create({
     marginVertical: 7,
   },
   getStartedText: {
+    fontFamily: 'laila-regular',
     fontSize: 22,
     color: '#f7f7f7',
     lineHeight: 24,
@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
     paddingVertical: 25
   },
   welcomeText: {
+    fontFamily: 'laila-bold',
     fontSize: 40,
     color: '#fff',
     lineHeight: 50,
