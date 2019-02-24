@@ -1,43 +1,53 @@
 import React from 'react';
-import { Image, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { Image, Platform, ScrollView, StyleSheet, View, Text } from 'react-native';
 import { LinearGradient } from 'expo';
 import { MonoText } from '../components/StyledText';
+import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
+
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
 
+  navigateToLinks(gestureState) {
+    this.props.navigation.navigate('Links');
+  }
+
   render() {
+    const config = {
+      velocityThreshold: 0.6,
+      directionalOffsetThreshold: 60
+    }
+
     return (
-      <LinearGradient colors={['#c6f', '#EF7FC1']} style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+      <GestureRecognizer
+        onSwipeUp={(state) => this.navigateToLinks(state)}
+        onSwipeLeft={(state) => this.navigateToLinks(state)}
+        config={config}
+        style={styles.container}
+      >
+        <LinearGradient colors={['#ff1d6b', '#ef7fc1']} style={styles.container}>
+          <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
 
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/icon.png')
-                  : require('../assets/images/icon.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
+            <View style={styles.welcomeContainer}>
+              <Image
+                source={require('../assets/images/icon.png')}
+                style={styles.welcomeImage}
+              />
+            </View>
+            <View style={styles.getStartedContainer}>
 
-          <View style={styles.getStartedContainer}>
-            {/*{this._maybeRenderDevelopmentModeWarning()}*/}
-
-            <MonoText style={styles.welcomeText}>
-              Interrupción Legal del Embarazo
+              <MonoText style={styles.welcomeText}>
+                Interrupción Legal del Embarazo
             </MonoText>
-          </View>
+            </View>
 
-          <MonoText style={styles.getStartedText}>Presiona el botón de Enlaces y{"\n"} selecciona uno en la pantalla.</MonoText>
+            <MonoText style={styles.getStartedText}>Desliza hacia arriba o a la izquierda y{"\n"} selecciona un tema.</MonoText>
 
-        </ScrollView>
-
-
-      </LinearGradient>
+          </ScrollView>
+        </LinearGradient>
+      </GestureRecognizer>
     );
   }
 }
@@ -73,7 +83,7 @@ const styles = StyleSheet.create({
     marginVertical: 7,
   },
   getStartedText: {
-    fontSize: 17,
+    fontSize: 22,
     color: '#f7f7f7',
     lineHeight: 24,
     textAlign: 'center',

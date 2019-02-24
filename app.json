@@ -8,12 +8,18 @@
       "ios",
       "android"
     ],
+    "ios": {
+      "bundleIdentifier": "com.jamesg.ile"
+    },
+    "android": {
+      "package": "com.jamesg.ile"
+    },
     "version": "1.0.0",
-    "orientation": "portrait",
     "icon": "./assets/images/icon.png",
+    "orientation": "portrait",
     "splash": {
       "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -22,9 +28,6 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
-    },
     "description": "App sobre Interrupcion legal del embarazo",
     "githubUrl": "https://github.com/JamesGDiaz/ILE-mobile.git"
   }
