@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Platform, ScrollView, StyleSheet, View, Text } from 'react-native';
+import { Image, Platform, ScrollView, StyleSheet, View, Text, StatusBar } from 'react-native';
 import { LinearGradient } from 'expo';
 import GestureRecognizer from 'react-native-swipe-gestures';
 
@@ -20,33 +20,41 @@ export default class HomeScreen extends React.Component {
         }
 
         return (
-            <GestureRecognizer
-                onSwipeUp={(state) => this.navigateToLinks(state)}
-                onSwipeLeft={(state) => this.navigateToLinks(state)}
-                config={config}
-                style={styles.container}
-            >
-                <LinearGradient colors={['#b749ee', '#dca6f7']} style={styles.container}>
-                    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+            <View style={{ flex: 1 }}>
+                <View style={{ flex: 1 }}>
+                    <StatusBar />
+                    <GestureRecognizer
+                        onSwipeUp={(state) => this.navigateToLinks(state)}
+                        onSwipeLeft={(state) => this.navigateToLinks(state)}
+                        config={config}
+                        style={styles.container}
+                    >
 
-                        <View style={styles.welcomeContainer}>
-                            <Image
-                                source={require('../assets/images/icon.png')}
-                                style={styles.welcomeImage}
-                            />
-                        </View>
-                        <View style={styles.getStartedContainer}>
+                        <LinearGradient colors={['#b749ee', '#dca6f7']} style={styles.container}>
+                            <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
 
-                            <Text style={styles.welcomeText}>
-                                Interrupción Legal del Embarazo
+                                <View style={styles.welcomeContainer}>
+                                    <Image
+                                        source={require('../assets/images/icon.png')}
+                                        style={styles.welcomeImage}
+                                    />
+                                </View>
+                                <View style={styles.getStartedContainer}>
+
+                                    <Text style={styles.welcomeText}>
+                                        Interrupción Legal del Embarazo
             </Text>
-                        </View>
+                                </View>
 
-                        <Text style={styles.getStartedText}>Desliza hacia arriba o a la izquierda y{"\n"} selecciona un tema.</Text>
+                                <Text style={styles.getStartedText}>Desliza hacia arriba o a la izquierda y{"\n"} selecciona un tema.</Text>
 
-                    </ScrollView>
-                </LinearGradient>
-            </GestureRecognizer>
+                            </ScrollView>
+                        </LinearGradient>
+                    </GestureRecognizer>
+                </View>
+
+            </View>
+
         );
     }
 }

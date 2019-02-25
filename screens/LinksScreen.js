@@ -37,7 +37,6 @@ export default class LinksScreen extends React.Component {
   render() {
     return (
       <View style={styles.containerColumn}>
-        <StatusBar barStyle="light-content" hidden={false} backgroundColor="#101010" translucent={false} />
         <View style={[styles.box, styles.box1]}>
           <Touchable
             style={styles.option}
@@ -166,7 +165,7 @@ const styles = StyleSheet.create({
   optionText: {
     color: '#eee',
     fontFamily: 'quicksand-book',
-    fontSize: 22,
+    fontSize: 20,
     textAlign: 'center',
     alignItems: 'center',
     marginHorizontal: 20,
@@ -186,7 +185,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   box1: {
-    flex: 0.7,
+    flex: 0.8,
     fontSize: 28,
     backgroundColor: '#ef7f89'
   },
@@ -208,7 +207,6 @@ const styles = StyleSheet.create({
   },
   box6: {
     flex: 1,
-    fontSize: 28,
     backgroundColor: '#e73ba0'
   }
 });

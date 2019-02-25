@@ -14,12 +14,13 @@ export default class App extends React.Component {
         <AppLoading
           startAsync={this._loadResourcesAsync}
           onFinish={this._handleFinishLoading}
+          onError={console.warn}
         />
       );
     } else {
       return (
-        <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+
+        <View style={styles.container} >
           <AppContainer />
         </View>
       );
@@ -44,6 +45,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    //marginTop: StatusBar.currentHeight,
   },
 });

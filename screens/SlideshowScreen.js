@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { SafeAreaView, View, StyleSheet, Dimensions, TouchableHighlight, Text, Image } from 'react-native';
-import ImageSlider from 'react-native-image-slider';
+import Gallery from 'react-native-image-gallery'
 
 export default class SlideshowScreen extends Component {
     constructor() {
@@ -36,7 +36,7 @@ export default class SlideshowScreen extends Component {
         console.log(`OrientationStatus: ${this.state.OrientationStatus}`);
 
         //Set screen in landscape
-        Expo.ScreenOrientation.allowAsync(Expo.ScreenOrientation.Orientation.LANDSCAPE);
+        Expo.ScreenOrientation.allowAsync(Expo.ScreenOrientation.Orientation.ALL_BUT_UPSIDE_DOWN);
     }
 
     componentWillUnmount() {
@@ -47,61 +47,62 @@ export default class SlideshowScreen extends Component {
     render() {
         const dataSource = [
             [ //when the user presses Derechos Humanos
-                require('../assets/slides/derechos_humanos/1.jpg'),
-                require('../assets/slides/derechos_humanos/2.jpg'),
-                require('../assets/slides/derechos_humanos/3.jpg'),
-                require('../assets/slides/derechos_humanos/4.jpg'),
-                require('../assets/slides/derechos_humanos/5.jpg'),
+                { source: require('../assets/slides/derechos_humanos/1.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/derechos_humanos/2.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/derechos_humanos/3.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/derechos_humanos/4.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/derechos_humanos/5.jpg'), dimensions: { width: 1920, height: 1080 } },
             ],
             [ //when the user presses Normatividad
-                require('../assets/slides/normatividad/1.jpg'),
-                require('../assets/slides/normatividad/2.jpg'),
-                require('../assets/slides/normatividad/3.jpg'),
-                require('../assets/slides/normatividad/4.jpg'),
-                require('../assets/slides/normatividad/5.jpg'),
-                require('../assets/slides/normatividad/6.jpg'),
-                require('../assets/slides/normatividad/7.jpg'),
+                { source: require('../assets/slides/normatividad/1.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/normatividad/2.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/normatividad/3.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/normatividad/4.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/normatividad/5.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/normatividad/6.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/normatividad/7.jpg'), dimensions: { width: 1920, height: 1080 } },
             ],
             [
-                require('../assets/slides/facilidades_acceso/1.jpg'),
-                require('../assets/slides/facilidades_acceso/2.jpg'),
-                require('../assets/slides/facilidades_acceso/3.jpg'),
-                require('../assets/slides/facilidades_acceso/4.jpg'),
-                require('../assets/slides/facilidades_acceso/9.jpg'),
-                require('../assets/slides/facilidades_acceso/10.jpg'),
-                require('../assets/slides/facilidades_acceso/11.jpg'),
-                require('../assets/slides/facilidades_acceso/12.jpg'),
+                { source: require('../assets/slides/facilidades_acceso/1.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/facilidades_acceso/2.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/facilidades_acceso/3.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/facilidades_acceso/4.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/facilidades_acceso/9.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/facilidades_acceso/10.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/facilidades_acceso/11.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/facilidades_acceso/12.jpg'), dimensions: { width: 1920, height: 1080 } },
 
             ],
             [
-                require('../assets/slides/factibilidad/1.jpg'),
-                require('../assets/slides/factibilidad/2.jpg'),
+                { source: require('../assets/slides/factibilidad/1.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/factibilidad/2.jpg'), dimensions: { width: 1920, height: 1080 } },
             ],
             [
-                require('../assets/slides/redes_de_apoyo/1.jpg'),
-                require('../assets/slides/redes_de_apoyo/2.jpg'),
-                require('../assets/slides/redes_de_apoyo/3.jpg'),
-                require('../assets/slides/redes_de_apoyo/4.jpg'),
-                require('../assets/slides/redes_de_apoyo/5.jpg'),
-                require('../assets/slides/redes_de_apoyo/6.jpg'),
-                require('../assets/slides/redes_de_apoyo/7.jpg'),
-                require('../assets/slides/redes_de_apoyo/8.jpg'),
-                require('../assets/slides/redes_de_apoyo/9.jpg'),
+                { source: require('../assets/slides/redes_de_apoyo/1.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/redes_de_apoyo/2.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/redes_de_apoyo/3.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/redes_de_apoyo/4.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/redes_de_apoyo/5.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/redes_de_apoyo/6.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/redes_de_apoyo/7.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/redes_de_apoyo/8.jpg'), dimensions: { width: 1920, height: 1080 } },
+                { source: require('../assets/slides/redes_de_apoyo/9.jpg'), dimensions: { width: 1920, height: 1080 } },
             ]
         ]
 
         return (
-            <SafeAreaView style={{ flex: 1, backgroundColor: '010101' }}>
-                <ImageSlider
-                    images={dataSource[this.state.callerId]}
-                />
-            </SafeAreaView>
+            <Gallery
+                style={{ flex: 1, backgroundColor: 'black' }}
+                initialPage={0}
+                //initial image to show
+                images={dataSource[this.state.callerId]}
+            />
         )
     }
 }
 
 const styles = StyleSheet.create({
-    scrollview: {
+    container: {
         flex: 1,
     },
 

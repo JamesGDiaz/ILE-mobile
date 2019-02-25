@@ -13,7 +13,6 @@ export default class ContactScreen extends React.Component {
 
     _onPressButton() {
         Alert.alert(`Se ha enviado tu mensaje`);
-        //console.log(`'message sent: "${this.state.messageText}"`);
     }
 
     render() {
