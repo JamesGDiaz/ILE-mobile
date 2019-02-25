@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     marginVertical: 7,
   },
   getStartedText: {
-    fontFamily: 'laila-regular',
+    fontFamily: 'quicksand-book',
     fontSize: 22,
     color: '#f7f7f7',
     lineHeight: 24,
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     paddingVertical: 25
   },
   welcomeText: {
-    fontFamily: 'laila-bold',
+    fontFamily: 'quicksand-bold',
     fontSize: 40,
     color: '#fff',
     lineHeight: 50,

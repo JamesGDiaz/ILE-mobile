@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
         paddingVertical: 25
     },
     welcomeText: {
-        fontFamily: 'laila-bold',
+        fontFamily: 'quicksand-bold',
         fontSize: 40,
         color: '#fff',
         lineHeight: 50,

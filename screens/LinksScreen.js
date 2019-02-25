@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
   },
   optionText: {
     color: '#eee',
-    fontFamily: 'laila-regular',
+    fontFamily: 'quicksand_book',
     fontSize: 22,
     textAlign: 'center',
     alignItems: 'center',
