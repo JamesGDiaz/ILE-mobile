@@ -47,24 +47,46 @@ export default class SlideshowScreen extends Component {
     render() {
         const dataSource = [
             [ //when the user presses Derechos Humanos
-                require('../assets/slides/derechos_humanos/img1.jpg'),
-                require('../assets/slides/derechos_humanos/img2.jpg'),
-                require('../assets/slides/derechos_humanos/img3.jpg'),
+                require('../assets/slides/derechos_humanos/1.jpg'),
+                require('../assets/slides/derechos_humanos/2.jpg'),
+                require('../assets/slides/derechos_humanos/3.jpg'),
+                require('../assets/slides/derechos_humanos/4.jpg'),
+                require('../assets/slides/derechos_humanos/5.jpg'),
             ],
             [ //when the user presses Normatividad
-                require('../assets/slides/normatividad/img1.jpg'),
-                require('../assets/slides/normatividad/img2.png'),
-                require('../assets/slides/normatividad/img3.png'),
-                require('../assets/slides/normatividad/img4.jpg'),
+                require('../assets/slides/normatividad/1.jpg'),
+                require('../assets/slides/normatividad/2.jpg'),
+                require('../assets/slides/normatividad/3.jpg'),
+                require('../assets/slides/normatividad/4.jpg'),
+                require('../assets/slides/normatividad/5.jpg'),
+                require('../assets/slides/normatividad/6.jpg'),
+                require('../assets/slides/normatividad/7.jpg'),
             ],
             [
+                require('../assets/slides/facilidades_acceso/1.jpg'),
+                require('../assets/slides/facilidades_acceso/2.jpg'),
+                require('../assets/slides/facilidades_acceso/3.jpg'),
+                require('../assets/slides/facilidades_acceso/4.jpg'),
+                require('../assets/slides/facilidades_acceso/9.jpg'),
+                require('../assets/slides/facilidades_acceso/10.jpg'),
+                require('../assets/slides/facilidades_acceso/11.jpg'),
+                require('../assets/slides/facilidades_acceso/12.jpg'),
 
             ],
             [
-
+                require('../assets/slides/factibilidad/1.jpg'),
+                require('../assets/slides/factibilidad/2.jpg'),
             ],
             [
-
+                require('../assets/slides/redes_de_apoyo/1.jpg'),
+                require('../assets/slides/redes_de_apoyo/2.jpg'),
+                require('../assets/slides/redes_de_apoyo/3.jpg'),
+                require('../assets/slides/redes_de_apoyo/4.jpg'),
+                require('../assets/slides/redes_de_apoyo/5.jpg'),
+                require('../assets/slides/redes_de_apoyo/6.jpg'),
+                require('../assets/slides/redes_de_apoyo/7.jpg'),
+                require('../assets/slides/redes_de_apoyo/8.jpg'),
+                require('../assets/slides/redes_de_apoyo/9.jpg'),
             ]
         ]
 
@@ -72,7 +94,6 @@ export default class SlideshowScreen extends Component {
             <SafeAreaView style={{ flex: 1, backgroundColor: '010101' }}>
                 <ImageSlider
                     images={dataSource[this.state.callerId]}
-                    style={StyleSheet.scrollview}
                 />
             </SafeAreaView>
         )

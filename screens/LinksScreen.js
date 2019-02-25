@@ -8,10 +8,6 @@ export default class LinksScreen extends React.Component {
     title: 'Enlaces',
     header: null
   }
-  state = {
-    isModalVisible: false,
-    ModalVisible: false,
-  };
 
   _handlePressHumanRights = () => {
     this.props.navigation.navigate('Slideshows', { callerId: 0 });
@@ -49,7 +45,7 @@ export default class LinksScreen extends React.Component {
             onPress={this._handlePressHumanRights}>
             <View style={{ flexDirection: 'column' }}>
               <View style={styles.optionIconContainer}>
-                <Ionicons name="md-happy" size={38} color="#cccc00" />
+                <Ionicons name="md-happy" size={38} color="#eee" />
               </View>
               <Text style={styles.optionText}>
                 Derechos Humanos
@@ -65,7 +61,7 @@ export default class LinksScreen extends React.Component {
               onPress={this._handlePressNormativity}>
               <View style={{ flexDirection: 'column' }}>
                 <View style={styles.optionIconContainer}>
-                  <Ionicons name="md-paper" size={38} color="#7300e6" />
+                  <Ionicons name="md-paper" size={38} color="#eee" />
                 </View>
                 <Text style={styles.optionText}>
                   Normatividad
@@ -80,7 +76,7 @@ export default class LinksScreen extends React.Component {
               onPress={this._handlePressFacilidades}>
               <View style={{ flexDirection: 'column' }}>
                 <View style={styles.optionIconContainer}>
-                  <Ionicons name="md-hand" size={38} color="#ff33cc" />
+                  <Ionicons name="md-hand" size={38} color="#eee" />
                 </View>
                 <Text style={styles.optionText}>
                   Facilidades{"\n"}de Acceso
@@ -97,7 +93,7 @@ export default class LinksScreen extends React.Component {
               onPress={this._handlePressFactibilidad}>
               <View style={{ flexDirection: 'column' }}>
                 <View style={styles.optionIconContainer}>
-                  <Ionicons name="md-heart" size={38} color="red" />
+                  <Ionicons name="md-heart" size={38} color="#dd1c8d" />
                 </View>
                 <Text style={styles.optionText}>
                   Factibilidad{"\n"}de Caso
@@ -112,7 +108,7 @@ export default class LinksScreen extends React.Component {
               onPress={this._handlePressSupportNetworks}>
               <View style={{ flexDirection: 'column' }}>
                 <View style={styles.optionIconContainer}>
-                  <Ionicons name="md-contacts" size={38} color="#3366ff" />
+                  <Ionicons name="md-contacts" size={38} color="#ad7fef" />
                 </View>
                 <Text style={styles.optionText}>
                   Redes{"\n"}de Apoyo
@@ -128,7 +124,7 @@ export default class LinksScreen extends React.Component {
             onPress={this._handlePressCuentanos}>
             <View style={{ flexDirection: 'column' }}>
               <View style={styles.optionIconContainer}>
-                <Ionicons name="ios-chatboxes" size={38} color="#0099ff" />
+                <Ionicons name="ios-chatboxes" size={38} color="#7fe1cf" />
               </View>
               <View style={styles.optionTextContainer}>
                 <Text style={styles.optionText}>
@@ -169,7 +165,7 @@ const styles = StyleSheet.create({
   },
   optionText: {
     color: '#eee',
-    fontFamily: 'quicksand_book',
+    fontFamily: 'quicksand-book',
     fontSize: 22,
     textAlign: 'center',
     alignItems: 'center',
@@ -192,27 +188,53 @@ const styles = StyleSheet.create({
   box1: {
     flex: 0.7,
     fontSize: 28,
-    backgroundColor: '#0099ff'
+    backgroundColor: '#ef7f89'
   },
   box2: {
     flex: 1,
-    backgroundColor: '#cc3399'
+    backgroundColor: '#ad7fef'
   },
   box3: {
     flex: 1,
-    backgroundColor: '#8BC34A'
+    backgroundColor: '#ef7fc1'
   },
   box4: {
     flex: 1,
-    backgroundColor: '#e3aa1a'
+    backgroundColor: '#c1ef7f'
   },
   box5: {
     flex: 1,
-    backgroundColor: '#ff4d88'
+    backgroundColor: '#7fefad'
   },
   box6: {
     flex: 1,
     fontSize: 28,
-    backgroundColor: '#ffcc00'
+    backgroundColor: '#e73ba0'
   }
 });
+
+/*
+Amarillo bonito
+#FFF87F
+
+Lila betun de pastel chafa
+#F5DCF9
+
+Rosa labial de barbie
+#FFE4E1
+
+Verde pistachon
+#DCF9E4
+
+Naranja con subtono amarillo atardecer
+#FFE1AE
+
+Nude kim kardashian
+F5DABD
+
+No sé cómo describir este, verde con 4 litros de blanco encima
+#F7F7C6
+
+Ps ya un gris príncipe de gales si como no
+#E0E4CC
+*/

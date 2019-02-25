@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Platform, ScrollView, StyleSheet, View, Text, TextInput } from 'react-native';
+import { Image, ScrollView, StyleSheet, View, Text, TextInput, Button, Alert } from 'react-native';
 import { LinearGradient } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -7,6 +7,14 @@ export default class ContactScreen extends React.Component {
     static navigationOptions = {
         header: null,
     };
+    state = {
+        messageText: 'empty'
+    }
+
+    _onPressButton() {
+        Alert.alert(`Se ha enviado tu mensaje`);
+        //console.log(`'message sent: "${this.state.messageText}"`);
+    }
 
     render() {
         return (
@@ -15,22 +23,33 @@ export default class ContactScreen extends React.Component {
 
                     <View style={styles.welcomeContainer}>
                         <Image
-                            source={require('../assets/images/tablet.png')}
+                            source={require('../assets/images/flower.png')}
                             style={styles.welcomeImage}
                         />
                     </View>
                     <View style={styles.getStartedContainer}>
 
                         <Text style={styles.welcomeText}>
-                            Cuentanos tu experiencia
+                            Cuéntanos tu experiencia
             </Text>
                     </View>
-                    <TextInput
-                        style={{ height: 40 }}
-                        placeholder="Escribe tu mensaje aqui."
-                    />
-                    <View style={styles.container}>
 
+                    <View style={styles.textInputContainer}>
+                        <TextInput
+                            style={styles.messageBox}
+                            placeholder="Escribe tu mensaje aqui."
+                            multiline={true}
+                            numberOfLines={5}
+                            onChangeText={(text) => this.setState({ messageText: text })}
+                        />
+                    </View>
+                    <View style={styles.buttonContainer}>
+                        <Button
+                            onPress={this._onPressButton}
+                            title="Envíanos tus comentarios"
+                            color="#841584"
+                            style={{ height: '40' }}
+                        />
                     </View>
                 </ScrollView>
             </LinearGradient>
@@ -47,8 +66,8 @@ const styles = StyleSheet.create({
     },
     welcomeContainer: {
         alignItems: 'center',
-        marginTop: 10,
-        marginBottom: 20,
+        marginTop: 7,
+        marginBottom: 5,
     },
     welcomeImage: {
         width: 200,
@@ -61,49 +80,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginHorizontal: 50,
     },
-    homeScreenFilename: {
-        marginVertical: 7,
-    },
-    getStartedText: {
-        fontSize: 22,
-        color: '#f7f7f7',
-        lineHeight: 24,
-        textAlign: 'center',
-        paddingVertical: 25
-    },
     welcomeText: {
         fontFamily: 'quicksand-bold',
         fontSize: 40,
         color: '#fff',
         lineHeight: 50,
         textAlign: 'center',
-        paddingVertical: 15,
+        paddingVertical: 10,
         textShadowColor: '#222',
         textShadowOffset: { width: 1, height: 1 },
         textShadowRadius: 15
-    },
-    tabBarInfoContainer: {
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'black',
-                shadowOffset: { height: -3 },
-                shadowOpacity: 0.1,
-                shadowRadius: 3,
-            },
-            android: {
-                elevation: 20,
-            },
-        }),
-        alignItems: 'center',
-        backgroundColor: '#fbfbfb',
-        paddingVertical: 20,
-    },
-    navigationFilename: {
-        marginTop: 5,
     },
     helpContainer: {
         marginTop: 15,
@@ -118,5 +104,20 @@ const styles = StyleSheet.create({
     },
     ionIconSocialMedia: {
         color: '#2f95dc'
-    }
+    },
+    messageBox:
+    {
+        backgroundColor: '#eee',
+        borderColor: '#444',
+        borderWidth: 1,
+        borderRadius: 10,
+    },
+    textInputContainer: {
+        justifyContent: 'center',
+        flex: 1,
+        margin: 10
+    },
+    buttonContainer: {
+        margin: 20
+    },
 });
