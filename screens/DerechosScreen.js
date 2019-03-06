@@ -18,6 +18,7 @@ const images = [
     //{ source: require('../assets/slides/derechos/derechos_sexuales/1.jpg'), dimensions: { width: 1920, height: 1080 } },
     //{ source: require('../assets/slides/derechos/derechos_sexuales/2.jpg'), dimensions: { width: 1920, height: 1080 } },
     //{ source: require('../assets/slides/derechos/derechos_sexuales/3.jpg'), dimensions: { width: 1920, height: 1080 } },
+    { source: require('../assets/slides/placeholder.jpg'), dimensions: { width: 1920, height: 1080 } },
   ],
 ]
 

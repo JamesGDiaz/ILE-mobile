@@ -6,13 +6,9 @@ import SlideshowModalScreen from './SlideshowModalScreen';
 
 const images = [
     [ //when the user presses Derechos Humanos
-        { source: require('../assets/slides/derechos_humanos/1.jpg'), dimensions: { width: 1920, height: 1080 } },
-        { source: require('../assets/slides/derechos_humanos/2.jpg'), dimensions: { width: 1920, height: 1080 } },
-    ],
-    [ //when the user presses Derechos Sexuales
-        { source: require('../assets/slides/derechos_humanos/3.jpg'), dimensions: { width: 1920, height: 1080 } },
-        { source: require('../assets/slides/derechos_humanos/4.jpg'), dimensions: { width: 1920, height: 1080 } },
-        { source: require('../assets/slides/derechos_humanos/5.jpg'), dimensions: { width: 1920, height: 1080 } },
+        //{ source: require('../assets/slides/derechos_humanos/1.jpg'), dimensions: { width: 1920, height: 1080 } },
+        //{ source: require('../assets/slides/derechos_humanos/2.jpg'), dimensions: { width: 1920, height: 1080 } },
+        { source: require('../assets/slides/placeholder.jpg'), dimensions: { width: 1920, height: 1080 } },
     ],
 ]
 

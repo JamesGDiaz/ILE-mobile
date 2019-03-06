@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 32729,
-  "expoServerNgrokUrl": "https://ff-pw7.jamesgdiaz.ile-mobile.exp.direct",
-  "packagerNgrokUrl": "https://packager.ff-pw7.jamesgdiaz.ile-mobile.exp.direct",
-  "ngrokPid": 323
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
