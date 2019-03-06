@@ -9,7 +9,7 @@ export default class HomeScreen extends React.Component {
         header: null,
     };
 
-    navigateToLinks(gestureState) {
+    navigateToLinks() {
         this.props.navigation.navigate('Links');
     }
 
@@ -24,8 +24,10 @@ export default class HomeScreen extends React.Component {
                 <View style={{ flex: 1 }}>
                     <StatusBar />
                     <GestureRecognizer
-                        onSwipeUp={(state) => this.navigateToLinks(state)}
+                        onSwipeRight={(state) => this.navigateToLinks(state)}
                         onSwipeLeft={(state) => this.navigateToLinks(state)}
+                        onSwipeUp={(state) => this.navigateToLinks(state)}
+                        onSwipeDown={(state) => this.navigateToLinks(state)}
                         config={config}
                         style={styles.container}
                     >

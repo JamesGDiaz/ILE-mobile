@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, StatusBar, Text } from 'react-native';
+import { StyleSheet, View, TouchableHighlight, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Touchable from 'react-native-platform-touchable';
 
@@ -10,24 +10,24 @@ export default class LinksScreen extends React.Component {
   }
 
   _handlePressHumanRights = () => {
-    this.props.navigation.navigate('Slideshows', { callerId: 0 });
+    this.props.navigation.navigate('Derechos');
   };
 
   _handlePressNormativity = () => {
-    this.props.navigation.navigate('Slideshows', { callerId: 1 });
+    this.props.navigation.navigate('Normatividad');
   };
 
   _handlePressFacilidades = () => {
-    this.props.navigation.navigate('Slideshows', { callerId: 2 });
+    this.props.navigation.navigate('Facilidades');
 
   };
 
   _handlePressFactibilidad = () => {
-    this.props.navigation.navigate('Slideshows', { callerId: 3 });
+    this.props.navigation.navigate('Factibilidad');
   };
 
   _handlePressSupportNetworks = () => {
-    this.props.navigation.navigate('Slideshows', { callerId: 4 });
+    this.props.navigation.navigate('Redes');
   };
 
   _handlePressCuentanos = () => {
@@ -143,7 +143,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#eee',
-    borderBottomWidth: 1,
     borderBottomColor: '#ebebeb',
   },
   containerRow: {

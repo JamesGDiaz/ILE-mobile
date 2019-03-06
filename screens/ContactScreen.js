@@ -1,57 +1,102 @@
 import React from 'react';
-import { Image, ScrollView, StyleSheet, View, Text, TextInput, Button, Alert } from 'react-native';
+import { Image, StyleSheet, View, Text, TextInput, TouchableOpacity, Alert, Animated, Easing } from 'react-native';
 import { LinearGradient } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
+import email from 'react-native-email';
+
+var spin = null;
 
 export default class ContactScreen extends React.Component {
+    constructor() {
+        super();
+        this.RotateValueHolder = new Animated.Value(0);
+    }
     static navigationOptions = {
         header: null,
     };
-    state = {
-        messageText: 'empty'
-    }
 
     _onPressButton() {
         Alert.alert(`Se ha enviado tu mensaje`);
     }
 
+    componentDidMount() {
+        this.StartImageRotateFunction();
+    }
+
+    StartImageRotateFunction() {
+        this.RotateValueHolder.setValue(0);
+        Animated.timing(this.RotateValueHolder, {
+            toValue: 1,
+            duration: 5000,
+            easing: Easing.linear,
+            useNativeDriver: true
+        }).start(() => this.StartImageRotateFunction());
+    }
+
+    _handleEmail() {
+        const to = ['interrupcionlegaldelembarazo19@gmail.com']
+        email(to, {
+            subject: 'Comentarios sobre mi experiencia',
+            body: "\uD83D\uDE00"
+        }).catch(console.error)
+    }
+
     render() {
+        const RotateData = this.RotateValueHolder.interpolate({
+            inputRange: [0, 1],
+            outputRange: ['0deg', '360deg'],
+        });
+
         return (
             <LinearGradient colors={['#c6f', '#EF7FC1']} style={styles.container}>
-                <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-
-                    <View style={styles.welcomeContainer}>
-                        <Image
+                <View style={styles.container}>
+                    <Text style={styles.titleText}>
+                        ¡Cuéntanos tu experiencia!
+                        </Text>
+                    <View style={styles.sendMessageContainer}>
+                        <Text style={styles.emailText}>
+                            ¡Envíanos un email!
+                        </Text>
+                        <TouchableOpacity style={styles.socialIcon} onPress={this._handleEmail}>
+                            <Ionicons name="md-mail" size={85} color='#f4f4f4' />
+                        </TouchableOpacity>
+                    </View>
+                    <Text style={styles.socialNetworksText}>
+                        ¡Buscanos en nuestras redes sociales!
+                    </Text>
+                    <View style={styles.iconContainer}>
+                        <View style={styles.spacer}></View>
+                        <TouchableOpacity style={styles.socialIcon}>
+                            <Ionicons name="logo-facebook" size={60} color='#f4f4f4' />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.socialIcon}>
+                            <Ionicons name="logo-instagram" size={60} color='#f4f4f4' />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.socialIcon}>
+                            <Ionicons name="logo-twitter" size={60} color='#f4f4f4' />
+                        </TouchableOpacity>
+                        <View style={styles.spacer}></View>
+                    </View>
+                    <View style={styles.bottomContainer}>
+                        <Text style={styles.aboutText}>
+                            Hecho por Franco Giordani y Katya Ruiz.
+                            #aguacate
+                        </Text>
+                        <Animated.Image
                             source={require('../assets/images/flower.png')}
-                            style={styles.welcomeImage}
+                            style={{
+                                flex: 0.9,
+                                width: 200,
+                                height: 160,
+                                resizeMode: 'contain',
+                                marginBottom: 20,
+                                marginRight: 20,
+                                transform: [{ rotate: RotateData }]
+                            }}
                         />
                     </View>
-                    <View style={styles.getStartedContainer}>
-
-                        <Text style={styles.welcomeText}>
-                            Cuéntanos tu experiencia
-            </Text>
-                    </View>
-
-                    <View style={styles.textInputContainer}>
-                        <TextInput
-                            style={styles.messageBox}
-                            placeholder="Escribe tu mensaje aqui."
-                            multiline={true}
-                            numberOfLines={5}
-                            onChangeText={(text) => this.setState({ messageText: text })}
-                        />
-                    </View>
-                    <View style={styles.buttonContainer}>
-                        <Button
-                            onPress={this._onPressButton}
-                            title="Envíanos tus comentarios"
-                            color="#841584"
-                            style={{ height: '40' }}
-                        />
-                    </View>
-                </ScrollView>
-            </LinearGradient>
+                </View>
+            </LinearGradient >
         );
     }
 }
@@ -59,64 +104,100 @@ export default class ContactScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection: 'column',
     },
-    contentContainer: {
-        paddingTop: 30,
-    },
-    welcomeContainer: {
-        alignItems: 'center',
-        marginTop: 7,
-        marginBottom: 5,
-    },
-    welcomeImage: {
-        width: 200,
-        height: 160,
-        resizeMode: 'contain',
-        marginTop: 3,
-        marginLeft: -10,
-    },
-    getStartedContainer: {
-        alignItems: 'center',
-        marginHorizontal: 50,
-    },
-    welcomeText: {
-        fontFamily: 'quicksand-bold',
-        fontSize: 40,
-        color: '#fff',
-        lineHeight: 50,
-        textAlign: 'center',
-        paddingVertical: 10,
+    titleText: {
+        flex: 0.3,
+        color: '#eee',
+        fontFamily: 'quicksand-book',
+        fontSize: 24,
+        marginHorizontal: 20,
+        marginTop: 60,
         textShadowColor: '#222',
         textShadowOffset: { width: 1, height: 1 },
-        textShadowRadius: 15
+        textShadowRadius: 15,
     },
-    helpContainer: {
-        marginTop: 15,
+    sendMessageContainer: {
+        flex: 1,
+        marginTop: 10,
+        marginHorizontal: 30,
         alignItems: 'center',
-    },
-    helpLink: {
-        paddingVertical: 15,
-    },
-    helpLinkText: {
-        fontSize: 14,
-        color: '#2e78b7',
-    },
-    ionIconSocialMedia: {
-        color: '#2f95dc'
+        justifyContent: 'center',
     },
     messageBox:
     {
+        flex: 1,
         backgroundColor: '#eee',
-        borderColor: '#444',
+        borderColor: '#848484',
         borderWidth: 1,
         borderRadius: 10,
+        marginBottom: 10
     },
-    textInputContainer: {
+    textSend: {
+        fontFamily: 'quicksand-book',
+        fontSize: 14,
+        color: '#eee'
+    },
+    socialNetworksText: {
+        flex: 0.3,
+        color: '#eee',
+        fontFamily: 'quicksand-book',
+        fontSize: 20,
+        marginTop: 35,
+        marginHorizontal: 20,
+        textShadowColor: '#222',
+        textShadowOffset: { width: 1, height: 1 },
+        textShadowRadius: 15,
+        textAlign: 'center'
+    },
+    emailText: {
+        flex: 0.3,
+        color: '#eee',
+        fontFamily: 'quicksand-book',
+        fontSize: 20,
+        marginTop: 35,
+        marginHorizontal: 20,
+        textShadowColor: '#222',
+        textShadowOffset: { width: 1, height: 1 },
+        textShadowRadius: 15,
+        marginBottom: 15
+    },
+    iconContainer: {
+        flex: 0.5,
+        flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'center',
-        flex: 1,
-        margin: 10
+        paddingHorizontal: 20,
+        marginBottom: 50
     },
-    buttonContainer: {
-        margin: 20
+    spacer: {
+        flex: 1,
+        marginHorizontal: 5
+    },
+    socialIcon: {
+        flex: 1,
+    },
+    bottomContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    aboutText: {
+        flex: 1,
+        fontFamily: 'quicksand-book',
+        fontSize: 14,
+        color: '#eee',
+        lineHeight: 20,
+        marginLeft: 25,
+
+    },
+    flowerImage: {
+        flex: 0.9,
+        width: 200,
+        height: 160,
+        resizeMode: 'contain',
+        marginBottom: 20,
+        marginRight: 20,
+        transform: [{ rotate: this.RotateData }]
     },
 });
