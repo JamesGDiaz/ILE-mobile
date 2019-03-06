@@ -196,29 +196,3 @@ const styles = StyleSheet.create({
         backgroundColor: '#ad7fef'
     },
 });
-
-/*
-Amarillo bonito
-#FFF87F
-
-Lila betun de pastel chafa
-#F5DCF9
-
-Rosa labial de barbie
-#FFE4E1
-
-Verde pistachon
-#DCF9E4
-
-Naranja con subtono amarillo atardecer
-#FFE1AE
-
-Nude kim kardashian
-F5DABD
-
-No sé cómo describir este, verde con 4 litros de blanco encima
-#F7F7C6
-
-Ps ya un gris príncipe de gales si como no
-#E0E4CC
-*/

@@ -14,7 +14,7 @@ import FactibilidadScreen from '../screens/FactibilidadScreen';
 const transitionConfig = () => {
   return {
     transitionSpec: {
-      duration: 600,
+      duration: 750,
       easing: Easing.out(Easing.poly(4)),
       timing: Animated.timing,
       useNativeDriver: true,
@@ -41,10 +41,11 @@ const MainNavigator = createStackNavigator({
   Contact: { screen: ContactScreen },
   Derechos: { screen: DerechosScreen },
   Normatividad: { screen: NormatividadScreen },
-  Redes: { screen: RedesScreen },
   Facilidades: { screen: FacilidadesScreen },
-  Factibilidad: { screen: FactibilidadScreen }
-}, {
+  Factibilidad: { screen: FactibilidadScreen },
+  Redes: { screen: RedesScreen },
+},
+  {
     transitionConfig,
   });
 
