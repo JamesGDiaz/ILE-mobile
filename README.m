@@ -1,3 +1,4 @@
 # ILE-mobile
 
-Realizado por Franco Giordani y Katya Ruiz
+Software por Franco Giordani.
+Graficos por Katya Ruiz.
