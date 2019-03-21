@@ -4,42 +4,60 @@ import { Ionicons } from '@expo/vector-icons';
 import Touchable from 'react-native-platform-touchable';
 import SlideshowModalScreen from './SlideshowModalScreen';
 
-const images = [
+
+const uris = [
   [ //when the user presses Derechos Humanos
-    { source: require('../assets/slides/derechos/derechos_humanos/1.jpg'), dimensions: { width: 1920, height: 1080 } },
-    { source: require('../assets/slides/derechos/derechos_humanos/2.jpg'), dimensions: { width: 1920, height: 1080 } },
-    { source: require('../assets/slides/derechos/derechos_humanos/3.jpg'), dimensions: { width: 1920, height: 1080 } },
-    { source: require('../assets/slides/derechos/derechos_humanos/4.jpg'), dimensions: { width: 1920, height: 1080 } },
-    { source: require('../assets/slides/derechos/derechos_humanos/5.jpg'), dimensions: { width: 1920, height: 1080 } },
-    { source: require('../assets/slides/derechos/derechos_humanos/6.jpg'), dimensions: { width: 1920, height: 1080 } },
-    { source: require('../assets/slides/derechos/derechos_humanos/6.jpg'), dimensions: { width: 1920, height: 1080 } },
+    "https://firebasestorage.googleapis.com/v0/b/ile-mobile-1551929213713.appspot.com/o/derechos%2Fderechos_humanos%2F1.jpg?alt=media",
+    "https://firebasestorage.googleapis.com/v0/b/ile-mobile-1551929213713.appspot.com/o/derechos%2Fderechos_humanos%2F2.jpg?alt=media",
+    "https://firebasestorage.googleapis.com/v0/b/ile-mobile-1551929213713.appspot.com/o/derechos%2Fderechos_humanos%2F3.jpg?alt=media",
+    "https://firebasestorage.googleapis.com/v0/b/ile-mobile-1551929213713.appspot.com/o/derechos%2Fderechos_humanos%2F4.jpg?alt=media",
+    "https://firebasestorage.googleapis.com/v0/b/ile-mobile-1551929213713.appspot.com/o/derechos%2Fderechos_humanos%2F5.jpg?alt=media",
+    "https://firebasestorage.googleapis.com/v0/b/ile-mobile-1551929213713.appspot.com/o/derechos%2Fderechos_humanos%2F6.jpg?alt=media",
+    "https://firebasestorage.googleapis.com/v0/b/ile-mobile-1551929213713.appspot.com/o/derechos%2Fderechos_humanos%2F7.jpg?alt=media"
   ],
   [ //when the user presses Derechos Sexuales
-    //{ source: require('../assets/slides/derechos/derechos_sexuales/1.jpg'), dimensions: { width: 1920, height: 1080 } },
-    //{ source: require('../assets/slides/derechos/derechos_sexuales/2.jpg'), dimensions: { width: 1920, height: 1080 } },
-    //{ source: require('../assets/slides/derechos/derechos_sexuales/3.jpg'), dimensions: { width: 1920, height: 1080 } },
-    { source: require('../assets/slides/placeholder.jpg'), dimensions: { width: 1920, height: 1080 } },
+    "https://firebasestorage.googleapis.com/v0/b/ile-mobile-1551929213713.appspot.com/o/derechos%2Fderechos_sexuales%2FA.jpg?alt=media",
+    "https://firebasestorage.googleapis.com/v0/b/ile-mobile-1551929213713.appspot.com/o/derechos%2Fderechos_sexuales%2FB.jpg?alt=media",
+    "https://firebasestorage.googleapis.com/v0/b/ile-mobile-1551929213713.appspot.com/o/derechos%2Fderechos_sexuales%2FC.jpg?alt=media",
+    "https://firebasestorage.googleapis.com/v0/b/ile-mobile-1551929213713.appspot.com/o/derechos%2Fderechos_sexuales%2FD.jpg?alt=media",
+    "https://firebasestorage.googleapis.com/v0/b/ile-mobile-1551929213713.appspot.com/o/derechos%2Fderechos_sexuales%2FE.jpg?alt=media",
+    "https://firebasestorage.googleapis.com/v0/b/ile-mobile-1551929213713.appspot.com/o/derechos%2Fderechos_sexuales%2FF.jpg?alt=media",
+    "https://firebasestorage.googleapis.com/v0/b/ile-mobile-1551929213713.appspot.com/o/derechos%2Fderechos_sexuales%2FG.jpg?alt=media",
+    "https://firebasestorage.googleapis.com/v0/b/ile-mobile-1551929213713.appspot.com/o/derechos%2Fderechos_sexuales%2FH.jpg?alt=media",
+    "https://firebasestorage.googleapis.com/v0/b/ile-mobile-1551929213713.appspot.com/o/derechos%2Fderechos_sexuales%2FI.jpg?alt=media",
+    "https://firebasestorage.googleapis.com/v0/b/ile-mobile-1551929213713.appspot.com/o/derechos%2Fderechos_sexuales%2FJ.jpg?alt=media"
   ],
 ]
 
 export default class DerechosScreen extends React.Component {
   static navigationOptions = {
-    title: 'Derechos',
-    header: null
+    title: 'Tus Derechos',
+    headerStyle: {
+      backgroundColor: '#eb5c69',
+    },
   }
   state = {
-    selectedimages: null,
-    modalVisible: false,
+    SlideshowComponent: {
+      modalVisible: false,
+      images: [null],
+    }
   }
 
-  hideStatusBar = () => {
-    console.log('Hiding StatusBar')
-    StatusBar.setHidden(true);
-  }
 
   //To bind the state of this Screen with the SlideshowModalScreen's visible prop
   updateState(data) {
     this.setState(data);
+  }
+
+  componentDidMount() {
+    StatusBar.setHidden(false);
+  }
+
+  showSlideshowComponent(uris) {
+    //this.clearCache()
+    console.log('Hiding StatusBar...');
+    StatusBar.setHidden(true);
+    this.setState({ SlideshowComponent: { images: uris, modalVisible: true } })
   }
 
   render() {
@@ -50,12 +68,11 @@ export default class DerechosScreen extends React.Component {
             style={styles.option}
             background={Touchable.Ripple('#ccc', false)}
             onPress={() => {
-              this.hideStatusBar()
-              this.setState({ selectedimages: 0, modalVisible: true });
+              this.showSlideshowComponent(uris[0]);
             }}>
-            <View style={{ flexDirection: 'column' }}>
+            <View style={styles.touchableContent}>
               <View style={styles.optionIconContainer}>
-                <Ionicons name="ios-body" size={38} color="#eee" />
+                <Ionicons name="ios-people" size={50} color="#eee" />
               </View>
               <Text style={styles.optionText}>
                 Derechos Humanos
@@ -68,12 +85,11 @@ export default class DerechosScreen extends React.Component {
             style={styles.option}
             background={Touchable.Ripple('#ccc', false)}
             onPress={() => {
-              this.hideStatusBar()
-              this.setState({ selectedimages: 1, modalVisible: true });
+              this.showSlideshowComponent(uris[1]);
             }}>
-            <View style={{ flexDirection: 'column' }}>
+            <View style={styles.touchableContent}>
               <View style={styles.optionIconContainer}>
-                <Ionicons name="ios-heart" size={38} color="#eee" />
+                <Ionicons name="ios-female" size={50} color="#eee" />
               </View>
               <Text style={styles.optionText}>
                 Derechos Sexuales Y Reproductivos
@@ -82,8 +98,8 @@ export default class DerechosScreen extends React.Component {
           </Touchable>
         </View>
         <SlideshowModalScreen
-          images={images[this.state.selectedimages]}
-          visible={this.state.modalVisible}
+          images={this.state.SlideshowComponent.images}
+          visible={this.state.SlideshowComponent.modalVisible}
           updateParentState={this.updateState.bind(this)} />
       </View>
     );
@@ -103,32 +119,35 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
   },
   optionIconContainer: {
-    flex: 1,
+    flex: 0.2,
     color: '#eee',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 5,
-    marginTop: 15,
+    marginHorizontal: 5,
+    marginBottom: 16
   },
   option: {
     flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   optionText: {
     color: '#eee',
     fontFamily: 'quicksand-book',
-    fontSize: 20,
+    fontSize: 26,
     textAlign: 'center',
-    alignItems: 'center',
-    marginHorizontal: 20,
-    marginBottom: 40,
+    marginHorizontal: 10,
     textShadowColor: '#222',
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 15
   },
-  box: {
+  touchableContent: {
     flex: 1,
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  box: {
+    flex: 1,
   },
   box1: {
     flex: 1,
@@ -137,32 +156,6 @@ const styles = StyleSheet.create({
   },
   box2: {
     flex: 1,
-    backgroundColor: '#ad7fef'
+    backgroundColor: '#f19099'
   },
 });
-
-/*
-Amarillo bonito
-#FFF87F
-
-Lila betun de pastel chafa
-#F5DCF9
-
-Rosa labial de barbie
-#FFE4E1
-
-Verde pistachon
-#DCF9E4
-
-Naranja con subtono amarillo atardecer
-#FFE1AE
-
-Nude kim kardashian
-F5DABD
-
-No sé cómo describir este, verde con 4 litros de blanco encima
-#F7F7C6
-
-Ps ya un gris príncipe de gales si como no
-#E0E4CC
-*/

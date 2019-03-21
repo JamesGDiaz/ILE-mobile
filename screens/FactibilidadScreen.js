@@ -1,25 +1,21 @@
 import React from 'react';
-import { StyleSheet, View, Text, StatusBar } from 'react-native';
+import { StyleSheet, View, Text, StatusBar, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Touchable from 'react-native-platform-touchable';
 import SlideshowModalScreen from './SlideshowModalScreen';
 
-const images = [
-    [ //when the user presses Derechos Humanos
-        //{ source: require('../assets/slides/derechos_humanos/1.jpg'), dimensions: { width: 1920, height: 1080 } },
-        //{ source: require('../assets/slides/derechos_humanos/2.jpg'), dimensions: { width: 1920, height: 1080 } },
-        { source: require('../assets/slides/placeholder.jpg'), dimensions: { width: 1920, height: 1080 } },
-    ],
-    [
-        { source: require('../assets/slides/placeholder.jpg'), dimensions: { width: 1920, height: 1080 } },
-    ]
-]
-
 export default class FactibilidadScreen extends React.Component {
     static navigationOptions = {
         title: 'Factibilidad de Caso',
-        header: null
+        headerStyle: {
+            backgroundColor: '#eb975c',
+        },
     }
+
+    componentDidMount() {
+        StatusBar.setHidden(false);
+    }
+
     state = {
         selectedimages: null,
         modalVisible: false,
@@ -43,12 +39,12 @@ export default class FactibilidadScreen extends React.Component {
                         style={styles.option}
                         background={Touchable.Ripple('#ccc', false)}
                         onPress={() => {
-                            this.hideStatusBar()
-                            this.setState({ selectedimages: 0, modalVisible: true });
+
+                            this.props.navigation.navigate('Causales')
                         }}>
-                        <View style={{ flexDirection: 'column' }}>
+                        <View style={styles.touchableContent}>
                             <View style={styles.optionIconContainer}>
-                                <Ionicons name="ios-body" size={38} color="#eee" />
+                                <Ionicons name="ios-leaf" size={50} color="#eee" />
                             </View>
                             <Text style={styles.optionText}>
                                 Causales
@@ -61,12 +57,11 @@ export default class FactibilidadScreen extends React.Component {
                         style={styles.option}
                         background={Touchable.Ripple('#ccc', false)}
                         onPress={() => {
-                            this.hideStatusBar()
-                            this.setState({ selectedimages: 1, modalVisible: true });
+                            this.props.navigation.navigate('Estados');
                         }}>
-                        <View style={{ flexDirection: 'column' }}>
+                        <View style={styles.touchableContent}>
                             <View style={styles.optionIconContainer}>
-                                <Ionicons name="ios-heart" size={38} color="#eee" />
+                                <Image source={require('../assets/images/mexico.png')} style={{ height: 56, width: 56 }} />
                             </View>
                             <Text style={styles.optionText}>
                                 Estados
@@ -75,7 +70,7 @@ export default class FactibilidadScreen extends React.Component {
                     </Touchable>
                 </View>
                 <SlideshowModalScreen
-                    images={images[this.state.selectedimages]}
+                    images={this.state.selectedimages}
                     visible={this.state.modalVisible}
                     updateParentState={this.updateState.bind(this)} />
             </View>
@@ -96,40 +91,41 @@ const styles = StyleSheet.create({
         backgroundColor: '#eee',
     },
     optionIconContainer: {
-        flex: 1,
+        flex: 0.2,
         color: '#eee',
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingHorizontal: 5,
-        marginTop: 15,
+        marginHorizontal: 5,
     },
     option: {
         flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     optionText: {
         color: '#eee',
         fontFamily: 'quicksand-book',
-        fontSize: 20,
+        fontSize: 26,
         textAlign: 'center',
-        alignItems: 'center',
-        marginHorizontal: 20,
-        marginBottom: 40,
+        marginHorizontal: 10,
         textShadowColor: '#222',
         textShadowOffset: { width: 1, height: 1 },
         textShadowRadius: 15
     },
-    box: {
+    touchableContent: {
         flex: 1,
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center'
     },
+    box: {
+        flex: 1,
+    },
     box1: {
         flex: 1,
-        fontSize: 28,
-        backgroundColor: '#ef7f89'
+        backgroundColor: '#efad7f'
     },
     box2: {
         flex: 1,
-        backgroundColor: '#ad7fef'
+        backgroundColor: '#f1b890'
     },
 });

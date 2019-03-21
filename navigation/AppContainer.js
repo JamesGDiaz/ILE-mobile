@@ -10,6 +10,9 @@ import NormatividadScreen from '../screens/NormatividadScreen';
 import FacilidadesScreen from '../screens/FacilidadesScreen';
 import RedesScreen from '../screens/RedesDeApoyoScreen';
 import FactibilidadScreen from '../screens/FactibilidadScreen';
+import ClinicMapScreen from '../screens/ClinicMapScreen';
+import CausalesScreen from '../screens/CausalesScreen';
+import EstadosScreen from '../screens/EstadosScreen'
 
 const transitionConfig = () => {
   return {
@@ -44,9 +47,24 @@ const MainNavigator = createStackNavigator({
   Facilidades: { screen: FacilidadesScreen },
   Factibilidad: { screen: FactibilidadScreen },
   Redes: { screen: RedesScreen },
+  ClinicMap: { screen: ClinicMapScreen },
+  Causales: { screen: CausalesScreen },
+  Estados: { screen: EstadosScreen }
 },
   {
     transitionConfig,
-  });
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#f3f3f3',
+        height: 40
+      },
+      headerTintColor: '#eee',
+      headerTitleStyle: {
+        //fontWeight: 'bold',
+        fontFamily: Platform.OS === 'android' ? "sans-serif-light" : "San Francisco",
+      },
+    },
+  },
+);
 
 export default createAppContainer(MainNavigator);

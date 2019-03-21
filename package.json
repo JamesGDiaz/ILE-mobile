@@ -16,10 +16,14 @@
         "react": "16.5.0",
         "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
         "react-native-email": "^1.0.2",
+        "react-native-expo-image-cache": "^3.2.0",
         "react-native-image-gallery": "^2.1.5",
+        "react-native-image-slider": "^2.0.3",
+        "react-native-modalbox": "^1.7.1",
         "react-native-platform-touchable": "^1.1.1",
-        "react-native-swipe-gestures": "^1.0.3",
-        "react-navigation": "^3.3.0"
+        "react-native-simple-toast": "0.0.8",
+        "react-navigation": "^3.3.0",
+        "uuid": "^3.3.2"
     },
     "devDependencies": {
         "babel-preset-expo": "^5.0.0",

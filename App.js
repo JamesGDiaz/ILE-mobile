@@ -19,7 +19,6 @@ export default class App extends React.Component {
       );
     } else {
       return (
-
         <View style={styles.container} >
           <AppContainer />
         </View>
@@ -32,19 +31,19 @@ export default class App extends React.Component {
       Font.loadAsync({
         'quicksand-bold': require('./assets/fonts/Quicksand_Bold.otf'),
         'quicksand-book': require('./assets/fonts/Quicksand_Book.otf'),
-        'quicksand-light': require('./assets/fonts/Quicksand_Light.otf'),
       }),
     ]);
   };
 
   _handleFinishLoading = () => {
     this.setState({ isLoadingComplete: true });
+    console.log('Hiding StatusBar');
+    StatusBar.setHidden(true);
   };
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //marginTop: StatusBar.currentHeight,
   },
 });

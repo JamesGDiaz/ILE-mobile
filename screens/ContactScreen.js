@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, View, Text, TextInput, TouchableOpacity, Alert, Animated, Easing } from 'react-native';
+import { Image, StyleSheet, View, Text, TouchableOpacity, Alert, Animated, Easing } from 'react-native';
 import { LinearGradient } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import email from 'react-native-email';
@@ -65,23 +65,17 @@ export default class ContactScreen extends React.Component {
                         ¡Buscanos en nuestras redes sociales!
                     </Text>
                     <View style={styles.iconContainer}>
-                        <View style={styles.spacer}></View>
-                        <TouchableOpacity style={styles.socialIcon}>
-                            <Ionicons name="logo-facebook" size={60} color='#f4f4f4' />
+                        <TouchableOpacity >
+                            <Ionicons name="logo-facebook" size={60} color='#f4f4f4' style={styles.socialIcon} />
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.socialIcon}>
-                            <Ionicons name="logo-instagram" size={60} color='#f4f4f4' />
+                        <TouchableOpacity>
+                            <Ionicons name="logo-instagram" size={60} color='#f4f4f4' style={styles.socialIcon} />
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.socialIcon}>
-                            <Ionicons name="logo-twitter" size={60} color='#f4f4f4' />
+                        <TouchableOpacity>
+                            <Ionicons name="logo-twitter" size={60} color='#f4f4f4' style={styles.socialIcon} />
                         </TouchableOpacity>
-                        <View style={styles.spacer}></View>
                     </View>
                     <View style={styles.bottomContainer}>
-                        <Text style={styles.aboutText}>
-                            Hecho por Franco Giordani y Katya Ruiz.
-                            #aguacate
-                        </Text>
                         <Animated.Image
                             source={require('../assets/images/flower.png')}
                             style={{
@@ -89,8 +83,6 @@ export default class ContactScreen extends React.Component {
                                 width: 200,
                                 height: 160,
                                 resizeMode: 'contain',
-                                marginBottom: 20,
-                                marginRight: 20,
                                 transform: [{ rotate: RotateData }]
                             }}
                         />
@@ -105,6 +97,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
+        alignItems: 'center'
     },
     titleText: {
         flex: 0.3,
@@ -167,20 +160,19 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingHorizontal: 20,
-        marginBottom: 50
-    },
-    spacer: {
-        flex: 1,
-        marginHorizontal: 5
+        marginTop: 15,
+        marginBottom: 50,
+        marginHorizontal: 50,
     },
     socialIcon: {
         flex: 1,
+        marginHorizontal: 20
     },
     bottomContainer: {
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'center'
     },
     aboutText: {
         flex: 1,
@@ -196,8 +188,7 @@ const styles = StyleSheet.create({
         width: 200,
         height: 160,
         resizeMode: 'contain',
-        marginBottom: 20,
-        marginRight: 20,
+        marginBottom: 25,
         transform: [{ rotate: this.RotateData }]
     },
 });

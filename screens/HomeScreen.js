@@ -1,62 +1,40 @@
 import React from 'react';
-import { Image, Platform, ScrollView, StyleSheet, View, Text, StatusBar } from 'react-native';
-import { LinearGradient } from 'expo';
-import GestureRecognizer from 'react-native-swipe-gestures';
-
+import { Image, Platform, StyleSheet, View, Text, TouchableWithoutFeedback } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
         header: null,
     };
 
-    navigateToLinks() {
-        this.props.navigation.navigate('Links');
-    }
-
     render() {
         const config = {
-            velocityThreshold: 0.6,
-            directionalOffsetThreshold: 60
+            velocityThreshold: 0.4,
+            directionalOffsetThreshold: 50
         }
 
         return (
-            <View style={{ flex: 1 }}>
-                <View style={{ flex: 1 }}>
-                    <StatusBar />
-                    <GestureRecognizer
-                        onSwipeRight={(state) => this.navigateToLinks(state)}
-                        onSwipeLeft={(state) => this.navigateToLinks(state)}
-                        onSwipeUp={(state) => this.navigateToLinks(state)}
-                        onSwipeDown={(state) => this.navigateToLinks(state)}
-                        config={config}
-                        style={styles.container}
-                    >
-
-                        <LinearGradient colors={['#b749ee', '#dca6f7']} style={styles.container}>
-                            <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-
-                                <View style={styles.welcomeContainer}>
-                                    <Image
-                                        source={require('../assets/images/icon.png')}
-                                        style={styles.welcomeImage}
-                                    />
-                                </View>
-                                <View style={styles.getStartedContainer}>
-
-                                    <Text style={styles.welcomeText}>
-                                        Interrupción Legal del Embarazo
-            </Text>
-                                </View>
-
-                                <Text style={styles.getStartedText}>Desliza hacia arriba o a la izquierda y{"\n"} selecciona un tema.</Text>
-
-                            </ScrollView>
-                        </LinearGradient>
-                    </GestureRecognizer>
-                </View>
-
+            <View style={styles.container}>
+                <TouchableWithoutFeedback
+                    style={{ flex: 1, }}
+                    onPress={() => (this.props.navigation.navigate('Links'))}>
+                    <View style={{ flex: 1, alignItems: 'center', flexDirection: 'column' }}>
+                        <View style={styles.welcomeContainer}>
+                            <Image
+                                source={require('../assets/images/icon.png')}
+                                style={styles.welcomeImage}
+                            />
+                        </View>
+                        <Text style={styles.titleText}>
+                            Manual para la toma de decisiones en el acompañamiento de la Interrupción legal del embarazo
+                        </Text>
+                        <Ionicons style={{ flex: 0.2 }} name="md-menu" size={45} color="#eee" />
+                        <Text style={styles.getStartedText}>
+                            Toca la pantalla y{"\n"} selecciona un tema.
+                            </Text>
+                    </View>
+                </TouchableWithoutFeedback>
             </View>
-
         );
     }
 }
@@ -64,22 +42,17 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-    },
-    backgroundLinearGradientStyle: {
-        width: '100%',
-        flex: 1
-    },
-    contentContainer: {
-        paddingTop: 30,
+        backgroundColor: '#c060f0'
     },
     welcomeContainer: {
         alignItems: 'center',
-        marginTop: 10,
-        marginBottom: 20,
+        paddingTop: 20,
+        marginTop: 15,
+        marginBottom: 17,
     },
     welcomeImage: {
-        width: 200,
-        height: 160,
+        width: 180,
+        height: 140,
         resizeMode: 'contain',
         marginTop: 3,
         marginLeft: -10,
@@ -89,56 +62,26 @@ const styles = StyleSheet.create({
         marginHorizontal: 50,
     },
     getStartedText: {
+        flex: 1,
         fontFamily: 'quicksand-book',
         fontSize: 22,
         color: '#f7f7f7',
-        lineHeight: 30,
+        lineHeight: 26,
         textAlign: 'center',
-        paddingVertical: 25
+        marginTop: 20,
+        textShadowColor: '#222',
+        textShadowOffset: { width: 1, height: 1 },
+        textShadowRadius: 15
     },
-    welcomeText: {
-        fontFamily: 'quicksand-bold',
-        fontSize: 40,
+    titleText: {
+        fontFamily: 'quicksand-book',
+        fontSize: 28,
         color: '#fff',
-        lineHeight: 50,
+        lineHeight: 38,
         textAlign: 'center',
         paddingVertical: 15,
         textShadowColor: '#222',
         textShadowOffset: { width: 1, height: 1 },
         textShadowRadius: 15
-    },
-    tabBarInfoContainer: {
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'black',
-                shadowOffset: { height: -3 },
-                shadowOpacity: 0.1,
-                shadowRadius: 3,
-            },
-            android: {
-                elevation: 20,
-            },
-        }),
-        alignItems: 'center',
-        backgroundColor: '#fbfbfb',
-        paddingVertical: 20,
-    },
-    navigationFilename: {
-        marginTop: 5,
-    },
-    helpContainer: {
-        marginTop: 15,
-        alignItems: 'center',
-    },
-    helpLink: {
-        paddingVertical: 15,
-    },
-    helpLinkText: {
-        fontSize: 14,
-        color: '#2e78b7',
     },
 });
